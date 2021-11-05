@@ -17,29 +17,51 @@ public class ModelToDto implements Converters {
 
     @Override
     public StudentView studentToStudentView(Student student) {
-        return new StudentView(student.getId(), student.getName(),student.getEmail(),student.getAddress());
+        StudentView studentView = null;
+        if (student != null) {
+            studentView = new StudentView(student.getId(),
+                    student.getName(),
+                    student.getEmail(),
+                    student.getAddress());
+        }
+        return studentView;
     }
 
     @Override
     public CourseView courseToCourseView(Course course) {
-        return new CourseView(course.getId(), course.getCourseName(), course.getStartDate(), course.getWeekDuration(),studentsToStudentViews(course.getStudents()));
+        CourseView courseView = null;
+        if (course != null) {
+            courseView = new CourseView(course.getId(),
+                    course.getCourseName(),
+                    course.getStartDate(),
+                    course.getWeekDuration(),
+                    studentsToStudentViews(course.getStudents()));
+        }
+        return courseView;
     }
 
     @Override
     public List<CourseView> coursesToCourseViews(Collection<Course> courses) {
         List<CourseView> courseViews = new ArrayList<>();
-        for(Course course : courses){
-            courseViews.add(courseToCourseView(course));
+        if (courses != null) {
+            for (Course course : courses) {
+                if (course != null) {
+                    courseViews.add(courseToCourseView(course));
+                }
+            }
         }
-
         return courseViews;
     }
 
     @Override
     public List<StudentView> studentsToStudentViews(Collection<Student> students) {
         List<StudentView> studentViews = new ArrayList<>();
-        for(Student student : students){
-            studentViews.add(studentToStudentView(student));
+        if (students != null) {
+            for (Student student : students) {
+                if (student != null) {
+                    studentViews.add(studentToStudentView(student));
+                }
+            }
         }
         return studentViews;
     }

@@ -6,6 +6,7 @@ import se.lexicon.course_manager_assignment.data.sequencers.CourseSequencer;
 import se.lexicon.course_manager_assignment.model.Course;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 
@@ -21,7 +22,10 @@ public class CourseCollectionRepository implements CourseDao {
 
     @Override
     public Course createCourse(String courseName, LocalDate startDate, int weekDuration) {
-        return new Course(CourseSequencer.nextCourseId(), courseName, startDate, weekDuration);
+        Course course = new Course(CourseSequencer.nextCourseId(), courseName, startDate, weekDuration);
+        courses.add(course);
+
+        return course;
 
     }
 
@@ -70,7 +74,7 @@ public class CourseCollectionRepository implements CourseDao {
 
     @Override
     public Collection<Course> findAll() {
-        return this.courses;
+        return new ArrayList<>(courses);
     }
 
     @Override
@@ -88,8 +92,8 @@ public class CourseCollectionRepository implements CourseDao {
     public boolean removeCourse(Course course) {
         return courses.remove(course);
     }
-        @Override
-        public void clear () {
+    @Override
+    public void clear () {
             this.courses = new HashSet<>();
         }
     }

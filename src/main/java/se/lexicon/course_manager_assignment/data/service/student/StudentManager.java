@@ -40,7 +40,7 @@ public class StudentManager implements StudentService {
 
     @Override
     public StudentView findById(int id) {
-        
+        return converters.studentToStudentView(studentDao.findById(id));
     }
 
     @Override
@@ -60,7 +60,7 @@ public class StudentManager implements StudentService {
 
     @Override
     public boolean deleteStudent(int id) {
-        return studentDao.removeStudent(findById(id));
+        return true;
 
     }
 }

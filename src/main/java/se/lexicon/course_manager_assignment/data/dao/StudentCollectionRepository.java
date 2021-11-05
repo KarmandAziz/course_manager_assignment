@@ -6,6 +6,7 @@ import se.lexicon.course_manager_assignment.data.sequencers.CourseSequencer;
 import se.lexicon.course_manager_assignment.data.sequencers.StudentSequencer;
 import se.lexicon.course_manager_assignment.model.Student;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 
@@ -20,7 +21,9 @@ public class StudentCollectionRepository implements StudentDao {
 
     @Override
     public Student createStudent(String name, String email, String address) {
-        return new Student(StudentSequencer.nextStudentId(), name,email, address);
+        Student student = new Student(StudentSequencer.nextStudentId(), name, email,address);
+        students.add(student);
+        return student;
     }
 
     @Override
@@ -57,7 +60,7 @@ public class StudentCollectionRepository implements StudentDao {
 
     @Override
     public Collection<Student> findAll() {
-        return this.students;
+        return new ArrayList<>(students);
     }
 
     @Override

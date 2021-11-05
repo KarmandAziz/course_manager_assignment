@@ -39,7 +39,7 @@ public class CourseCollectionRepositoryTest {
 
     @Test
     public void testObject_successfully_created(){
-        Assertions.assertNotNull(testObject);
+
 
 
 

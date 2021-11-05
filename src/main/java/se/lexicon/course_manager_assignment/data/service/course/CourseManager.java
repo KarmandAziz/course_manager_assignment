@@ -30,7 +30,7 @@ public class CourseManager implements CourseService {
 
     @Override
     public CourseView create(CreateCourseForm form) {
-
+      return null;
     }
 
     @Override
