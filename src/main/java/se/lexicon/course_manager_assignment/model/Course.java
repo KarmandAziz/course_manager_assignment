@@ -19,6 +19,8 @@ public class Course {
         this.weekDuration = weekDuration;
     }
 
+    public Course() {
+    }
 
     public int getId() {
         return id;
