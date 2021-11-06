@@ -1,1 +1,7 @@
-[ ]
+[ {
+  "id" : 3,
+  "courseName" : "Programming",
+  "startDate" : "2021-11-18",
+  "weekDuration" : 20,
+  "students" : [ ]
+} ]

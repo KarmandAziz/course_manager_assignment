@@ -23,6 +23,7 @@ public class StudentCollectionRepository implements StudentDao {
     public Student createStudent(String name, String email, String address) {
         Student student = new Student(StudentSequencer.nextStudentId(), name, email,address);
         students.add(student);
+
         return student;
     }
 
@@ -33,7 +34,7 @@ public class StudentCollectionRepository implements StudentDao {
                 return student;
             }
         }
-        throw new IllegalArgumentException("Email is not found");
+        return null;
 
     }
 
@@ -55,7 +56,7 @@ public class StudentCollectionRepository implements StudentDao {
                 return student;
             }
         }
-        throw new IllegalArgumentException("Id is not found");
+        return null;
     }
 
     @Override

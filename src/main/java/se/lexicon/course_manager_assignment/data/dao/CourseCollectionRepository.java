@@ -20,6 +20,8 @@ public class CourseCollectionRepository implements CourseDao {
         this.courses = courses;
     }
 
+
+
     @Override
     public Course createCourse(String courseName, LocalDate startDate, int weekDuration) {
         Course course = new Course(CourseSequencer.nextCourseId(), courseName, startDate, weekDuration);
@@ -31,6 +33,7 @@ public class CourseCollectionRepository implements CourseDao {
 
 
 
+
     @Override
     public Course findById(int id) {
         for (Course course : courses) {
@@ -38,7 +41,7 @@ public class CourseCollectionRepository implements CourseDao {
                 return course;
             }
         }
-        throw new IllegalArgumentException("Id is not found");
+        return null;
     }
 
     @Override
